@@ -1,10 +1,4 @@
 #!/usr/bin/env ruby
-#sender_pattern = /\[from:(.*?)\]/
-recipient_pattern = /\[to:(.*?)\]/
-flags_pattern = /\[flags:(.*?)\]/
-
-sender = text.match(sender_pattern)[1]
-recipient = text.match(recipient_pattern)[1]
-flags = text.match(flags_pattern)[1]
-
-puts "#{sender},#{recipient},#{flags}"
+Format = ARGV[0].scan(/from:(.\w+)|to:(.\w+)|flags:([0-9:-]+)/)
+List = [Format[0].compact, Format[1].compact, Format[2].compact]
+puts List.join(',')
